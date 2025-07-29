@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <title>Uploader un fichier - {{ categorie }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        form { margin-top: 20px; }
+        input[type="file"] { margin-bottom: 10px; }
+        button { padding: 10px 15px; background: #007BFF; color: white; border: none; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        a { display: inline-block; margin-top: 15px; color: #555; }
+        ul { color: red; }
+    </style>
+</head>
+<body>
+    <h2>Uploader un fichier dans {{ categorie }}</h2>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="fichier" required>
+        <br>
+        <button type="submit">Uploader</button>
+    </form>
+
+    <a href="{{ url_for('afficher_documents', categorie=categorie) }}">← Retour aux documents</a>
+</body>
+</html>

@@ -1,0 +1,13 @@
+Flask==2.3.2
+gunicorn==20.1.0
+
+nano Procfile
+
+ls -ld .
+
+cd ..
+deactivate
+
+cd /Users/mac/Desktop/mon_app_flask
+
+

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Ouikrimath{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .sidebar {
+            height: 100vh;
+            background-color: #0d6efd;
+            color: white;
+            padding-top: 20px;
+            position: fixed;
+            width: 220px;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px 20px;
+        }
+        .sidebar a:hover {
+            background-color: #0b5ed7;
+        }
+        .content {
+            margin-left: 220px;
+            padding: 20px;
+        }
+    </style>
+
+    {% block head %}{% endblock %}
+</head>
+<body>
+
+<div class="sidebar d-flex flex-column">
+    <h4 class="text-center mb-4">📚 Ouikrimath</h4>
+    
+    <div class="px-3 mb-4">
+        <small>Connecté en tant que :</small><br />
+        <strong>{{ session.get('username', '') }}</strong> <br />
+        <em>({{ session.get('role', '') }})</em>
+    </div>
+
+    <a href="{{ url_for('dashboard') }}">🏠 Accueil</a>
+    <a href="{{ url_for('documents', categorie='resumes') }}">📄 Résumés</a>
+    <a href="{{ url_for('documents', categorie='exercices') }}">✏️ Exercices</a>
+    <a href="{{ url_for('documents', categorie='corrections') }}">✅ Corrections</a>
+    <a href="{{ url_for('documents', categorie='devoirs') }}">📝 Devoirs</a>
+    <a href="{{ url_for('documents', categorie='bacs') }}">🎓 Bacs blancs</a>
+    <a href="{{ url_for('logout') }}" class="mt-auto">🚪 Déconnexion</a>
+</div>
+
+<div class="content">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fermer"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+{% block scripts %}{% endblock %}
+
+</body>
+</html>

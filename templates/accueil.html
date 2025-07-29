@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Accueil</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px 25px;
+            font-size: 18px;
+            border: none;
+            background-color: #3498db;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bienvenue {{ username }} ! (rôle : {{ role }})</h1>
+
+    <a href="/documents/resumes" class="btn">📘 Résumés</a>
+    <a href="/documents/exercices" class="btn">📝 Exercices</a>
+    <a href="/documents/corrections" class="btn">✔️ Corrections</a>
+    <a href="/documents/images" class="btn">🖼️ Images</a>
+    <a href="/documents/videos" class="btn">🎬 Vidéos</a>
+    <a href="/documents/bacs-blancs" class="btn">🧪 Bacs blancs</a>
+    <a href="/documents/devoirs-surveillés" class="btn">🧾 Devoirs surveillés</a>
+</body>
+</html>
+©

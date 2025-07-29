@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Documents dans la catégorie : {{ categorie }}</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nom du fichier</th>
+            <th>Date de modification</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for fichier in fichiers %}
+        <tr>
+            <td>{{ fichier }}</td>
+            <td>{{ dates[fichier] }}</td>
+            <td>
+                <a href="{{ url_for('telecharger_fichier', categorie=categorie, nom_fichier=fichier) }}" class="btn btn-primary btn-sm">
+                    Télécharger
+                </a>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="3">Aucun fichier trouvé dans cette catégorie.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Retour au tableau de bord</a>
+{% endblock %}

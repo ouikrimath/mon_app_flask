@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Ouikrimath{% endblock %}
+
+{% block content %}
+<div class="mb-4">
+    <h2>👋 Bienvenue {{ username }}</h2>
+    <div class="alert alert-info">
+        Vous êtes connecté en tant que <strong>{{ role }}</strong>.
+    </div>
+</div>
+
+<div class="alert alert-info shadow-sm">
+    Utilisez le menu à gauche pour naviguer entre les différentes catégories de documents :
+    <strong>Résumés</strong>, <strong>Exercices</strong>, <strong>Corrections</strong>, <strong>Devoirs surveillés</strong>, <strong>Bacs blancs</strong>.
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-4 mb-3">
+        <div class="card border-primary shadow-sm">
+            <div class="card-body text-center">
+                <h5 class="card-title">📄 Résumés</h5>
+                <a href="{{ url_for('documents', categorie='resumes') }}" class="btn btn-primary mt-2">Voir</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="card border-success shadow-sm">
+            <div class="card-body text-center">
+                <h5 class="card-title">✏️ Exercices</h5>
+                <a href="{{ url_for('documents', categorie='exercices') }}" class="btn btn-success mt-2">Voir</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="card border-warning shadow-sm">
+            <div class="card-body text-center">
+                <h5 class="card-title">✅ Corrections</h5>
+                <a href="{{ url_for('documents', categorie='corrections') }}" class="btn btn-warning mt-2">Voir</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="card border-info shadow-sm">
+            <div class="card-body text-center">
+                <h5 class="card-title">📝 Devoirs</h5>
+                <a href="{{ url_for('documents', categorie='devoirs') }}" class="btn btn-info mt-2">Voir</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="card border-dark shadow-sm">
+            <div class="card-body text-center">
+                <h5 class="card-title">🎓 Bacs blancs</h5>
+                <a href="{{ url_for('documents', categorie='bacs') }}" class="btn btn-dark mt-2">Voir</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
